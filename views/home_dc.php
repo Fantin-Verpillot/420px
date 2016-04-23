@@ -1,3 +1,5 @@
+<?php require_once 'views/header.php'; ?>
+
 <h1>Connexion</h1>
 <p>
     <form action="index.php" method="post">
@@ -15,3 +17,5 @@
         <input type="submit" name="register" value="S'inscrire" />
     </form>
 </p>
+
+<?php require_once 'views/footer.php'; ?>
