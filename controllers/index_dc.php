@@ -27,9 +27,7 @@ if (isset($_GET['action'])) {
         default: {
             require_once 'views/home_dc.php';
         }
-
     }
-
 } else {
     require_once 'views/home_dc.php';
 }

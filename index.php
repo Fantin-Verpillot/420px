@@ -36,5 +36,3 @@ if (isset($_SESSION['user'])) {
 } else {
     require_once 'controllers/index_dc.php';
 }
-
-?>

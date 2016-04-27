@@ -22,7 +22,7 @@ if ($idUserConnected !== 0) {
 }
 $i = 0;
 foreach($users as $idUser => $images) {
-    if ($idUser == $idUserConnected) {
+    if ($idUser === $idUserConnected) {
         continue;
     }
 ?>

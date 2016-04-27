@@ -1,14 +1,15 @@
 <?php
 
-$idUserConnected = $_SESSION['user']['id'];
 if (isset($_GET['action']) && $_GET['action'] === 'disconnect') {
     session_destroy();
+    $idUserConnected = 0;
     require_once 'views/header_dc.php';
     require_once 'views/home_dc.php';
     require_once 'views/footer_dc.php';
     exit();
 }
 
+$idUserConnected = $_SESSION['user']['id'];
 require_once 'views/header.php';
 
 if (isset($_GET['action'])) {
