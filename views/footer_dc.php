@@ -1,3 +1,4 @@
+<div class="nav-reset"></div>
 <footer class="footer-dc">
     <div class="container">
         <div class="row">

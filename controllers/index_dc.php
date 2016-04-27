@@ -1,18 +1,15 @@
 <?php
 
-$idUserConnected = $_SESSION['user']['id'];
-if (isset($_GET['action']) && $_GET['action'] === 'disconnect') {
-    session_destroy();
-    require_once 'views/header_dc.php';
-    require_once 'views/home_dc.php';
-    require_once 'views/footer_dc.php';
-    exit();
-}
-
-require_once 'views/header.php';
+$idUserConnected = 0;
+require_once 'views/header_dc.php';
 
 if (isset($_GET['action'])) {
     switch($_GET['action']) {
+        case 'gallery' : {
+            require_once 'controllers/home.php';
+            require_once 'views/home.php';
+            break;
+        }
         case 'user' : {
             if (isset($_GET['param']) && User::exists($pdo, $_GET['param'])) {
                 require_once 'controllers/user.php';
@@ -28,13 +25,13 @@ if (isset($_GET['action'])) {
             }
         }
         default: {
-            require_once 'controllers/home.php';
-            require_once 'views/home.php';
+            require_once 'views/home_dc.php';
         }
+
     }
+
 } else {
-    require_once 'controllers/home.php';
-    require_once 'views/home.php';
+    require_once 'views/home_dc.php';
 }
 
-require_once 'views/footer.php';
+require_once 'views/footer_dc.php';

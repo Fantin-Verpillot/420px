@@ -51,7 +51,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="index.php">Home</a>
+                    <a href="index.php">Gallerie</a>
                 </li>
                 <li>
                     <a href="index.php?action=user&param=<?php echo $idUserConnected; ?>">Ma Page</a>

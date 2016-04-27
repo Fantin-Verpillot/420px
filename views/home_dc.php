@@ -1,4 +1,3 @@
-<?php require_once 'views/header_dc.php'; ?>
     <div class="content-section-a content-dc">
         <div class="container first-dc">
             <div class="row">
@@ -29,4 +28,3 @@
             </div>
         </div>
      </div>
-<?php require_once 'views/footer_dc.php'; ?>

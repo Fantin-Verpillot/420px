@@ -34,8 +34,7 @@ if (isset($_POST['login'])) {
 if (isset($_SESSION['user'])) {
     require_once 'controllers/index.php';
 } else {
-    //$alert_error = 'coucou philippe';
-    require_once 'views/home_dc.php';
+    require_once 'controllers/index_dc.php';
 }
 
 ?>
