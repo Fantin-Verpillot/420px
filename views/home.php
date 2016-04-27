@@ -47,7 +47,7 @@ foreach($users as $idUser => $images) {
                 }
                 ?>
             </div>
-            <a href="index.php?action=user&param=<?php echo $idUser; ?>"><h3 class="image-library-user"><?php echo $userPseudos[$idUser]; ?></h3></a>
+            <a href="index.php?action=user&param=<?php echo $idUser; ?>"><h3 class="image-library-user">Photos de <?php echo $userPseudos[$idUser]; ?></h3></a>
         </div>
     </div>
 <?php

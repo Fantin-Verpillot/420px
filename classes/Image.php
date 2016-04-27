@@ -13,7 +13,7 @@ class Image
         $select = $pdo->query('SELECT max(id) + 1 as max FROM image');
         $select->setFetchMode(PDO::FETCH_OBJ);
         $idImage = $select->fetch()->max;
-        $pdo->exec('INSERT INTO image (path, user_id) VALUES (\'files/img_'.$idImage.'.'.$extension.'\', '.$userId.')');
+        $pdo->exec('INSERT INTO image (id, path, user_id) VALUES ('.$idImage.', \'files/img_'.$idImage.'.'.$extension.'\', '.$userId.')');
         return $idImage;
     }
 

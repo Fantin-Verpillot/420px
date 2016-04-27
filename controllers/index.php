@@ -34,11 +34,12 @@ if (isset($_GET['action'])) {
                 $_GET['param'] = $idUserConnected;
                 require_once 'controllers/user.php';
                 require_once 'views/user.php';
+                $alert_error = 'La photo a disparu de votre page.';
                 break;
             }
         }
         case 'upload' : {
-            if (isset($_POST['upload'])) {
+            if (isset($_POST['upload']) && !empty($_FILES['file']['name'])) {
                 require_once 'controllers/upload.php';
                 $_GET['param'] = $idUserConnected;
                 require_once 'controllers/user.php';

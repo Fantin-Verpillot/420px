@@ -8,5 +8,5 @@ $userId = $imageTemp['user_id'];
 if ($userId === $idUserConnected) {
     $userPseudo = 'Photo &agrave; vous';
 } else {
-    $userPseudo = 'Photos de '.$userPseudo;
+    $userPseudo = 'Photo de '.$userPseudo;
 }
