@@ -1,12 +1,18 @@
-    <div class="content-section-a">
+    <div class="content-section-a content-section-user">
         <div class="container">
             <h3 class="image-user"><?php echo $userPseudo; ?></h3>
             <div class="row image-block">
                 <?php
-                foreach($images as $idImage => $image) {
+                if (count($images) === 0) {
                     ?>
-                <a href="index.php?action=image&param=<?php echo $idImage; ?>"><img class="image-library" src="<?php echo $image; ?>" alt=""></a>
+                    <img class="no-image-library space-top" src="assets/img/no_image.png" alt="">
                     <?php
+                } else {
+                    foreach($images as $idImage => $image) {
+                        ?>
+                        <a href="index.php?action=image&param=<?php echo $idImage; ?>"><img class="image-library" src="<?php echo $image; ?>" alt=""></a>
+                        <?php
+                    }
                 }
                 ?>
             </div>

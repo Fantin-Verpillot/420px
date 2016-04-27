@@ -6,8 +6,8 @@
                 <h1>Connexion</h1><br />
                     <p>
                         <form action="index.php" method="post">
-                            <input class="form-control form-field" type="text" name="pseudo" />
-                            <input class="form-control form-field" type="password" name="password" /><br />
+                            <input class="form-control form-field" placeholder="Pseudonyme" type="text" name="pseudo" />
+                            <input class="form-control form-field" placeholder="Mot de passe" type="password" name="password" /><br />
                             <button class="btn btn-primary form-field-button" type="submit" name="login">Se connecter</button>
                         </form>
                     </p>
@@ -18,8 +18,8 @@
                     <h1>Inscription</h1><br />
                 <p>
                 <form action="index.php" method="post">
-                    <input class="form-control form-field" type="text" name="pseudo" />
-                    <input class="form-control form-field" type="password" name="password" /><br />
+                    <input class="form-control form-field" placeholder="Pseudonyme" type="text" name="pseudo" />
+                    <input class="form-control form-field" placeholder="Mot de passe" type="password" name="password" /><br />
                     <button class="btn btn-primary form-field-button" type="submit" name="register">S'inscrire</button>
                 </form>
                 </p>

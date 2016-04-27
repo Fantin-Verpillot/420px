@@ -5,12 +5,16 @@ if ($idUserConnected !== 0) {
         <div class="container">
             <div class="row image-block">
                 <?php
-                foreach ($users[$idUserConnected] as $idImage => $image) {
+                if (count($users[$idUserConnected]) === 0) {
                     ?>
-                    <a href="index.php?action=image&param=<?php echo $idImage; ?>"><img class="image-library"
-                                                                                        src="<?php echo $image; ?>"
-                                                                                        alt=""></a>
+                    <img class="no-image-library" src="assets/img/no_image.png" />
                     <?php
+                } else {
+                    foreach ($users[$idUserConnected] as $idImage => $image) {
+                        ?>
+                        <a href="index.php?action=image&param=<?php echo $idImage; ?>"><img class="image-library" src="<?php echo $image; ?>"></a>
+                        <?php
+                    }
                 }
                 ?>
             </div>
@@ -22,7 +26,7 @@ if ($idUserConnected !== 0) {
 }
 $i = 0;
 foreach($users as $idUser => $images) {
-    if ($idUser === $idUserConnected) {
+    if ($idUser == $idUserConnected) {
         continue;
     }
 ?>
@@ -30,10 +34,16 @@ foreach($users as $idUser => $images) {
         <div class="container">
             <div class="row image-block">
                 <?php
-                foreach($images as $idImage => $image) {
-                ?>
-                    <a href="index.php?action=image&param=<?php echo $idImage; ?>"><img class="image-library" src="<?php echo $image; ?>" alt=""></a>
+                if (count($images) === 0) {
+                    ?>
+                    <img class="no-image-library" src="assets/img/no_image.png" alt="">
                 <?php
+                } else {
+                    foreach ($images as $idImage => $image) {
+                        ?>
+                        <a href="index.php?action=image&param=<?php echo $idImage; ?>"><img class="image-library" src="<?php echo $image; ?>"></a>
+                        <?php
+                    }
                 }
                 ?>
             </div>
@@ -43,5 +53,4 @@ foreach($users as $idUser => $images) {
 <?php
     ++$i;
 }
-
 ?>
