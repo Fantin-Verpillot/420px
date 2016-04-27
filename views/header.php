@@ -54,7 +54,10 @@
                     <a href="index.php">Home</a>
                 </li>
                 <li>
-                    <a href="index.php?action=user&param=0">Ma Page</a>
+                    <a href="index.php?action=user&param=<?php echo $idUserConnected; ?>">Ma Page</a>
+                </li>
+                <li>
+                    <a href="index.php?action=upload">Upload</a>
                 </li>
                 <li>
                     <a href="index.php?action=disconnect">Déconnexion</a>

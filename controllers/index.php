@@ -1,5 +1,7 @@
 <?php
 
+$idUserConnected = $_SESSION['user']['id'];
+
 if (isset($_GET['action'])) {
     switch($_GET['action']) {
         case 'disconnect' : {

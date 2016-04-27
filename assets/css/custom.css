@@ -17,17 +17,43 @@
     width: 1060px;
 }
 
+.form-field {
+    width: 350px;
+}
+
+.form-field-button {
+    width: 150px;
+}
+
 .image-library-user {
     float: right;
     margin: 0px;
 }
 
-.image-library-user {
-    margin: 0px;
+.display-inline {
+    display: inline;
+}
+
+.first-col-dc {
+    border-right: 1px solid grey;
 }
 
 .nav-reset {
     height: 45px;
+}
+
+.form-dc {
+    width: 350px;
+    margin: auto;
+
+}
+
+.content-dc {
+    height: 100%;
+}
+
+.first-dc {
+    margin-top: 100px;
 }
 
 .navbar-brand {
@@ -38,11 +64,22 @@
     background-color: #3a3a3a;
 }
 
-footer {
-    background-color: #3a3a3a;
-    padding: 20px 0;
+.navbar-default .navbar-nav > li > a:hover {
+    color: white;
 }
+
+footer {
+    height: 70px;
+    background-color: #3a3a3a;
+    padding: 5px 0;
+ }
 
 footer a {
     color: #777;
+}
+
+.footer-dc {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
