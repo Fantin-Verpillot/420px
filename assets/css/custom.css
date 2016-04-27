@@ -98,3 +98,12 @@ footer a {
     width: 100%;
     bottom: 0;
 }
+
+.delete-icon {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: -120px;
+    left: -60px;
+    opacity: 0.7;
+}

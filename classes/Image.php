@@ -2,6 +2,28 @@
 
 class Image
 {
+
+    public static function deleteImage($pdo, $idImage) {
+        $image = self::getImageById($pdo, $idImage);
+        unlink($image['path']);
+        $pdo->exec('DELETE FROM image WHERE id = '.$idImage);
+    }
+
+    public static function addImage($pdo, $userId, $extension) {
+        $select = $pdo->query('SELECT max(id) + 1 as max FROM image');
+        $select->setFetchMode(PDO::FETCH_OBJ);
+        $idImage = $select->fetch()->max;
+        $pdo->exec('INSERT INTO image (path, user_id) VALUES (\'files/img_'.$idImage.'.'.$extension.'\', '.$userId.')');
+        return $idImage;
+    }
+
+    public static function ownedBy($pdo, $idImage, $idUserConnected) {
+        $select = $pdo->query('SELECT user_id FROM image WHERE id = '.$idImage);
+        $select->setFetchMode(PDO::FETCH_OBJ);
+        $image = $select->fetch();
+        return $image->user_id === $idUserConnected;
+    }
+
     public static function getImagesByUsers($pdo) {
         $images = self::getImages($pdo);
         $users = User::getUsers($pdo);

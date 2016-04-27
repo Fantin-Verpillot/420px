@@ -28,6 +28,26 @@ if (isset($_GET['action'])) {
                 break;
             }
         }
+        case 'delete' : {
+            if (isset($_GET['param']) && Image::exists($pdo, $_GET['param']) && Image::ownedBy($pdo, $_GET['param'], $idUserConnected)) {
+                Image::deleteImage($pdo, $_GET['param']);
+                $_GET['param'] = $idUserConnected;
+                require_once 'controllers/user.php';
+                require_once 'views/user.php';
+                break;
+            }
+        }
+        case 'upload' : {
+            if (isset($_POST['upload'])) {
+                require_once 'controllers/upload.php';
+                $_GET['param'] = $idUserConnected;
+                require_once 'controllers/user.php';
+                require_once 'views/user.php';
+            } else {
+                require_once 'views/upload.php';
+            }
+            break;
+        }
         default: {
             require_once 'controllers/home.php';
             require_once 'views/home.php';
