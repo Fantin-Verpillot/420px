@@ -1,4 +1,4 @@
-<?php require_once 'views/header.php'; ?>
+<?php require_once 'views/header_dc.php'; ?>
 
 <h1>Connexion</h1>
 <p>
@@ -18,4 +18,4 @@
     </form>
 </p>
 
-<?php require_once 'views/footer.php'; ?>
+<?php require_once 'views/footer_dc.php'; ?>

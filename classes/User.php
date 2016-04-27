@@ -30,4 +30,36 @@ class User
         $user = $select->fetch();
         return $user ? array('id' => $user->id, 'pseudo' => $user->pseudo) : null;
     }
+
+    public static function getUsers($pdo) {
+        $select = $pdo->query('SELECT * FROM user');
+        $select->setFetchMode(PDO::FETCH_OBJ);
+        $users = array();
+        while($user = $select->fetch()) {
+            $users[] = array('id' => $user->id, 'pseudo' => $user->pseudo);
+        }
+        return $users;
+    }
+
+    public static function getUserPseudosById($pdo) {
+        $select = $pdo->query('SELECT * FROM user');
+        $select->setFetchMode(PDO::FETCH_OBJ);
+        $users = array();
+        while($user = $select->fetch()) {
+            $users[$user->id] = $user->pseudo;
+        }
+        return $users;
+    }
+
+    public static function getUserPseudoById($pdo, $idUser) {
+        $select = $pdo->query('SELECT pseudo FROM user WHERE id = '.$idUser);
+        $select->setFetchMode(PDO::FETCH_OBJ);
+        return $select->fetch()->pseudo;
+    }
+
+    public static function exists($pdo, $id) {
+        $select = $pdo->query('SELECT pseudo FROM user WHERE id = '.$id);
+        $select->setFetchMode(PDO::FETCH_OBJ);
+        return $select->fetch() !== false;
+    }
 }

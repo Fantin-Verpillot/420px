@@ -3,6 +3,7 @@ session_start();
 
 require_once 'include/settings.php';
 require_once 'classes/User.php';
+require_once 'classes/Image.php';
 
 $pdo = new PDO(DSN_DB, USER_DB, PASSWORD_DB);
 
@@ -31,7 +32,7 @@ if (isset($_POST['login'])) {
 }
 
 if (isset($_SESSION['user'])) {
-    require_once 'views/home_c.php';
+    require_once 'controllers/index.php';
 } else {
     //$alert_error = 'coucou philippe';
     require_once 'views/home_dc.php';

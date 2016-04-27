@@ -1,0 +1,41 @@
+.image-library {
+    width: 350px;
+    height: 350px;
+    padding: 30px;
+}
+
+.image-block {
+    margin:auto;
+    display: block;
+    width: 1060px;
+}
+
+.image-library-user {
+    float: right;
+    margin: 0px;
+}
+
+.image-library-user {
+    margin: 0px;
+}
+
+.nav-reset {
+    height: 45px;
+}
+
+.navbar-brand {
+    font-size: 20px;
+}
+
+.navbar-default {
+    background-color: #3a3a3a;
+}
+
+footer {
+    background-color: #3a3a3a;
+    padding: 20px 0;
+}
+
+footer a {
+    color: #777;
+}
