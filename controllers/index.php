@@ -14,6 +14,13 @@ if (isset($_GET['action'])) {
                 break;
             }
         }
+        case 'image' : {
+            if (isset($_GET['param']) && Image::exists($pdo, $_GET['param'])) {
+                require_once 'controllers/image.php';
+                require_once 'views/image.php';
+                break;
+            }
+        }
         default: {
             require_once 'controllers/home.php';
             require_once 'views/home.php';

@@ -4,6 +4,13 @@
     padding: 30px;
 }
 
+.image-page {
+    width: 420px;
+    height: 420px;
+    display: block;
+    margin:auto;
+}
+
 .image-block {
     margin:auto;
     display: block;

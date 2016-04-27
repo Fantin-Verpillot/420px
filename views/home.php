@@ -5,9 +5,9 @@
         <div class="container">
             <div class="row image-block">
                 <?php
-                foreach($users[$idUserConnected] as $image) {
+                foreach($users[$idUserConnected] as $idImage => $image) {
                     ?>
-                    <img class="image-library" src="<?php echo $image; ?>" alt="">
+                <a href="index.php?action=image&param=<?php echo $idImage; ?>"><img class="image-library" src="<?php echo $image; ?>" alt=""></a>
                     <?php
                 }
                 ?>
@@ -17,8 +17,8 @@
     </div>
 <?php
 $i = 0;
-foreach($users as $id => $images) {
-    if ($id == $idUserConnected) {
+foreach($users as $idUser => $images) {
+    if ($idUser == $idUserConnected) {
         continue;
     }
 ?>
@@ -26,19 +26,20 @@ foreach($users as $id => $images) {
         <div class="container">
             <div class="row image-block">
                 <?php
-                foreach($images as $image) {
+                foreach($images as $idImage => $image) {
                 ?>
-                    <img class="image-library" src="<?php echo $image; ?>" alt="">
+                    <a href="index.php?action=image&param=<?php echo $idImage; ?>"><img class="image-library" src="<?php echo $image; ?>" alt=""></a>
                 <?php
                 }
                 ?>
             </div>
-            <a href="index.php?action=user&param=<?php echo $id; ?>"><h3 class="image-library-user"><?php echo $userPseudos[$id]; ?></h3></a>
+            <a href="index.php?action=user&param=<?php echo $idUser; ?>"><h3 class="image-library-user"><?php echo $userPseudos[$idUser]; ?></h3></a>
         </div>
     </div>
 <?php
     ++$i;
 }
-?>
 
-<?php require_once 'views/footer.php'; ?>
+require_once 'views/footer.php';
+
+?>

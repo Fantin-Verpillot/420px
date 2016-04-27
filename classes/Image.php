@@ -11,7 +11,7 @@ class Image
             foreach ($images as $image) {
                 if ($image['user_id'] === $user['id']) {
                     if (count($imagesByUser[$user['id']]) < 3) {
-                        $imagesByUser[$user['id']][] = $image['path'];
+                        $imagesByUser[$user['id']][$image['id']] = $image['path'];
                     } else {
                         break;
                     }
@@ -26,7 +26,7 @@ class Image
         $select->setFetchMode(PDO::FETCH_OBJ);
         $images = array();
         while($image = $select->fetch()) {
-            $images[] = $image->path;
+            $images[$image->id] = $image->path;
         }
         return $images;
     }
@@ -39,5 +39,18 @@ class Image
             $images[] = array('id' => $image->id, 'path' => $image->path, 'user_id' => $image->user_id);
         }
         return $images;
+    }
+
+    public static function getImageById($pdo, $id) {
+        $select = $pdo->query('SELECT * FROM image WHERE id = '.$id);
+        $select->setFetchMode(PDO::FETCH_OBJ);
+        $image = $select->fetch();
+        return array('id' => $image->id, 'path' => $image->path, 'user_id' => $image->user_id);
+    }
+
+    public static function exists($pdo, $id) {
+        $select = $pdo->query('SELECT path FROM image WHERE id = '.$id);
+        $select->setFetchMode(PDO::FETCH_OBJ);
+        return $select->fetch() !== false;
     }
 }
