@@ -36,11 +36,11 @@ if (isset($_GET['action'])) {
         }
         default: {
             require_once 'views/home_dc.php';
-            require_once 'views/footer_dc.php';
+            require_once 'views/footer.php';
         }
     }
 } else {
     require_once 'views/home_dc.php';
-    require_once 'views/footer_dc.php';
+    require_once 'views/footer.php';
 
 }

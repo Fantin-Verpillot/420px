@@ -4,6 +4,12 @@ $target_dir = 'files/';
 $uploadOk = true;
 $imageFileType = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 $idImage = Image::addImage($pdo, $idUserConnected, $imageFileType);
+
+if (!Tools::validate($idImage)) {
+    $alert_error = Tools::internalError();
+    exit();
+}
+
 $target_file = $target_dir.'img_'.$idImage.'.'.$imageFileType;
 $check = getimagesize($_FILES['file']['tmp_name']);
 if($check === false) {

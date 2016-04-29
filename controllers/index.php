@@ -5,7 +5,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'disconnect') {
     $idUserConnected = 0;
     require_once 'views/header_dc.php';
     require_once 'views/home_dc.php';
-    require_once 'views/footer_dc.php';
+    require_once 'views/footer.php';
     exit();
 } elseif (isset($_GET['action']) && $_GET['action'] === 'rss' && isset($_GET['param']) && User::exists($pdo, $_GET['param'])) {
     require_once 'controllers/rss.php';
@@ -34,7 +34,13 @@ if (isset($_GET['action'])) {
         }
         case 'delete' : {
             if (isset($_GET['param']) && Image::exists($pdo, $_GET['param']) && Image::ownedBy($pdo, $_GET['param'], $idUserConnected)) {
-                Image::deleteImage($pdo, $_GET['param']);
+                $result = Image::deleteImage($pdo, $_GET['param']);
+
+                if (!Tools::validate($result)) {
+                    $alert_error = Tools::internalError();
+                    exit();
+                }
+
                 $_GET['param'] = $idUserConnected;
                 require_once 'controllers/user.php';
                 require_once 'views/user.php';
