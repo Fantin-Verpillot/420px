@@ -1,6 +1,13 @@
 <?php
 
 $idUserConnected = 0;
+
+if (isset($_GET['action']) && $_GET['action'] === 'rss' && isset($_GET['param']) && User::exists($pdo, $_GET['param'])) {
+    require_once 'controllers/rss.php';
+    require_once 'views/rss.php';
+    exit();
+}
+
 require_once 'views/header_dc.php';
 
 if (isset($_GET['action'])) {

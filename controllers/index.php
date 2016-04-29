@@ -7,6 +7,10 @@ if (isset($_GET['action']) && $_GET['action'] === 'disconnect') {
     require_once 'views/home_dc.php';
     require_once 'views/footer_dc.php';
     exit();
+} elseif (isset($_GET['action']) && $_GET['action'] === 'rss' && isset($_GET['param']) && User::exists($pdo, $_GET['param'])) {
+    require_once 'controllers/rss.php';
+    require_once 'views/rss.php';
+    exit();
 }
 
 $idUserConnected = $_SESSION['user']['id'];

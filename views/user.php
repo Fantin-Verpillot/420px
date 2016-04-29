@@ -1,6 +1,7 @@
     <div class="content-section-a content-section-user">
         <div class="container">
             <h3 class="image-user"><?php echo $userPseudo; ?></h3>
+            (<a target="_blank" href="index.php?action=rss&param=<?php echo $userId; ?>">Voir RSS</a>)
             <div class="row image-block">
                 <?php
                 if (count($images) === 0) {
