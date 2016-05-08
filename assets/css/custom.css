@@ -5,6 +5,12 @@
     border-radius: 5px;
 }
 
+.effect-image-page {
+    width: 100px;
+    height: 100px;
+    padding-bottom: 10px;
+}
+
 .content-section-user {
     min-height: 100%;
 }
@@ -21,6 +27,10 @@
 
 .space-top {
     margin-top: 30px;
+}
+
+.effect-block {
+    margin-left: 75px;
 }
 
 .image-page {
