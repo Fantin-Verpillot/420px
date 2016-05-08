@@ -10,3 +10,4 @@ if (!Tools::validateAll(array($images, $userPseudo))) {
 
 $userId = $_GET['param'];
 header('Content-Type: application/rss+xml; charset=utf-8');
+//header('Content-Type: text/xml');

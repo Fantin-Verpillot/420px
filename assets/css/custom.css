@@ -9,6 +9,10 @@
     min-height: 100%;
 }
 
+.upload-field {
+    height: 100%;
+}
+
 .image-library {
     width: 350px;
     height: 350px;
