@@ -28,7 +28,7 @@ if ($uploadOk && $_FILES['file']['size'] > 1000000) {
 }
 
 if ($uploadOk) {
-    if (move_uploaded_file($_FILES['file']['tmp_name'], $target_file) && Image::resize($target_file, $imageFileType, $idImage)) {
+    if (move_uploaded_file($_FILES['file']['tmp_name'], $target_file) && Image::resize($target_file)) {
         $alert_error = 'La photo est maintenant disponible sur votre page.';
     } else {
         $alert_error = 'Une erreur est survenue pendant la transaction.';

@@ -1,5 +1,8 @@
 <?php
 
+use Imagine\Gd\Imagine;
+use Imagine\Image\Box;
+
 class Image
 {
 
@@ -119,32 +122,12 @@ class Image
         }
     }
 
-    public static function resize($srcPath, $extension, $idImage) {
+    public static function resize($path) {
         try {
-            $destPath = $srcPath;
             $width = 420;
             $height = 420;
-            if ($extension == 'jpeg' || $extension == 'jpg') {
-                $src = imagecreatefromjpeg($srcPath);
-            } elseif ($extension == 'png') {
-                $src = imagecreatefrompng($srcPath);
-            } else {
-                $src = imagecreatefromgif($srcPath);
-            }
-            $dest = imagecreatetruecolor($width, $height);
-            imagealphablending($dest, false);
-            imagesavealpha($dest, true);
-            imagecopyresampled($dest, $src, 0, 0, 0, 0, $width, $height, imagesx($src), imagesy($src));
-            if ($extension == 'jpeg' || $extension == 'jpg') {
-                imagejpeg($dest, $destPath);
-            } elseif ($extension == 'png') {
-                imagepng($dest, $destPath);
-            } else {
-                imagegif($dest, $destPath);
-            }
-            /*if (self::deleteImage($pdo, $idImage) === null) {
-                throw new Exception();
-            }*/
+            $imagine = new Imagine();
+            $imagine->open($path)->resize(new Box($width, $height))->save($path);
             return true;
         } catch(Exception $e) {
             return null;
