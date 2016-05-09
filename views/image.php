@@ -5,7 +5,7 @@
                     <?php
                     if ($userId == $idUserConnected) {
                         ?>
-                        <a href=""><img class="effect-image-page" src="<?php echo $image; ?>" alt=""></a>
+                        <a href="index.php?action=effect&effect=sepia&param=<?php echo $imageId; ?>"><img class="effect-image-page" src="<?php echo $image; ?>" alt=""></a>
                         <a href=""><img class="effect-image-page" src="<?php echo $image; ?>" alt=""></a>
                         <a href=""><img class="effect-image-page" src="<?php echo $image; ?>" alt=""></a>
                         <a href=""><img class="effect-image-page" src="<?php echo $image; ?>" alt=""></a>
@@ -14,7 +14,7 @@
                     ?>
                 </div>
                 <div class="col-lg-6">
-                    <img class="image-page" src="<?php echo $image; ?>" alt="">
+                    <img class="image-page" src="<?php echo $image; ?>?=<?php echo uniqid(); ?>" alt="">
                 </div>
                 <div class="col-lg-2">
                     <?php

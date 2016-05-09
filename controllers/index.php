@@ -32,6 +32,14 @@ if (isset($_GET['action'])) {
                 break;
             }
         }
+        case 'effect' : {
+            if (isset($_GET['param']) && Image::exists($pdo, $_GET['param']) && isset($_GET['effect'])) {
+                require_once 'controllers/effect.php';
+                require_once 'controllers/image.php';
+                require_once 'views/image.php';
+                break;
+            }
+        }
         case 'delete' : {
             if (isset($_GET['param']) && Image::exists($pdo, $_GET['param']) && Image::ownedBy($pdo, $_GET['param'], $idUserConnected)) {
                 $result = Image::deleteImage($pdo, $_GET['param']);

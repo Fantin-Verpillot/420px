@@ -12,7 +12,7 @@ if ($idUserConnected !== 0) {
                 } else {
                     foreach ($users[$idUserConnected] as $idImage => $image) {
                         ?>
-                        <a href="index.php?action=image&param=<?php echo $idImage; ?>"><img class="image-library" src="<?php echo $image; ?>"></a>
+                        <a href="index.php?action=image&param=<?php echo $idImage; ?>"><img class="image-library" src="<?php echo $image; ?>?=<?php echo uniqid(); ?>"></a>
                         <?php
                     }
                 }
@@ -41,7 +41,7 @@ foreach($users as $idUser => $images) {
                 } else {
                     foreach ($images as $idImage => $image) {
                         ?>
-                        <a href="index.php?action=image&param=<?php echo $idImage; ?>"><img class="image-library" src="<?php echo $image; ?>"></a>
+                        <a href="index.php?action=image&param=<?php echo $idImage; ?>"><img class="image-library" src="<?php echo $image; ?>?=<?php echo uniqid(); ?>"></a>
                         <?php
                     }
                 }

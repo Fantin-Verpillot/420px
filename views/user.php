@@ -11,7 +11,7 @@
                 } else {
                     foreach($images as $idImage => $image) {
                         ?>
-                        <a href="index.php?action=image&param=<?php echo $idImage; ?>"><img class="image-library" src="<?php echo $image; ?>" alt=""></a>
+                        <a href="index.php?action=image&param=<?php echo $idImage; ?>"><img class="image-library" src="<?php echo $image; ?>?=<?php echo uniqid(); ?>" alt=""></a>
                         <?php
                     }
                 }

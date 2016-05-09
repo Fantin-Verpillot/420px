@@ -5,7 +5,6 @@ require_once 'include/settings.php';
 require_once 'classes/Tools.php';
 require_once 'classes/User.php';
 require_once 'classes/Image.php';
-require_once 'vendor/autoload.php';
 
 try {
     $pdo = new PDO(DSN_DB, USER_DB, PASSWORD_DB);

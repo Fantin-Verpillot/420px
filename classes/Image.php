@@ -1,8 +1,5 @@
 <?php
 
-use Imagine\Gd\Imagine;
-use Imagine\Image\Box;
-
 class Image
 {
 
@@ -122,15 +119,36 @@ class Image
         }
     }
 
-    public static function resize($path) {
-        try {
-            $width = 420;
-            $height = 420;
-            $imagine = new Imagine();
-            $imagine->open($path)->resize(new Box($width, $height))->save($path);
+    public static function resize($path, $extension)
+    {
+        $width = 420;
+        $height = 420;
+        $funcCreateImage = 'imagecreatefrom' . $extension;
+        $src = $funcCreateImage($path);
+        $dest = imagecreatetruecolor($width, $height);
+        if ($dest) {
+            imagealphablending($dest, false);
+            imagesavealpha($dest, true);
+            imagecopyresampled($dest, $src, 0, 0, 0, 0, $width, $height, imagesx($src), imagesy($src));
+            $funcSaveImage = 'image' . $extension;
+            $funcSaveImage($dest, $path);
             return true;
-        } catch(Exception $e) {
-            return null;
         }
+        return null;
+    }
+
+    public static function sepia($path, $extension)
+    {
+        $funcCreateImage = 'imagecreatefrom' . $extension;
+        $img = $funcCreateImage($path);
+        if ($img) {
+            imagefilter($img, IMG_FILTER_GRAYSCALE);
+            imagefilter($img, IMG_FILTER_COLORIZE, 100, 50, 0);
+            $funcSaveImage = 'image' . $extension;
+            $funcSaveImage($img, $path);
+            //imagedestroy($img);
+            return true;
+        }
+        return null;
     }
 }
