@@ -67,6 +67,11 @@ if (isset($_GET['action'])) {
             }
             break;
         }
+        case 'search' : {
+            require_once 'controllers/search.php';
+            require_once 'views/search.php';
+            break;
+        }
         default: {
             require_once 'controllers/home.php';
             require_once 'views/home.php';

@@ -52,6 +52,9 @@
                 <li>
                     <a href="index.php?action=gallery">Gallerie</a>
                 </li>
+                <li>
+                    <a href="index.php?action=search">Recherche</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

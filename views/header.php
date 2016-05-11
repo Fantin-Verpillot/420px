@@ -54,6 +54,9 @@
                     <a href="index.php">Gallerie</a>
                 </li>
                 <li>
+                    <a href="index.php?action=search">Recherche</a>
+                </li>
+                <li>
                     <a href="index.php?action=user&param=<?php echo $idUserConnected; ?>">Ma Page</a>
                 </li>
                 <li>

@@ -36,7 +36,7 @@ if (isset($_POST['login'])) {
     if (User::checkCredential($_POST['pseudo'], $_POST['password'])) {
         $user = User::registerUser($pdo, $_POST['pseudo'], $_POST['password']);
         if (count($user) !== 0) {
-            $result = User::connectUser($user);
+            User::connectUser($user);
             if (!Tools::validate($user)) {
                 $internalError = true;
             }
