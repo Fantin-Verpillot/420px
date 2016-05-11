@@ -63,6 +63,10 @@
     display: inline;
 }
 
+.color-search-button {
+    float: right;
+}
+
 .first-col-dc {
     border-right: 1px solid grey;
 }
@@ -71,11 +75,22 @@
     height: 45px;
 }
 
+.search-form {
+    border-bottom: 1px solid grey;
+    padding-bottom: 45px;
+}
+
 .form-dc {
     width: 350px;
     margin: auto;
 
 }
+
+.form-search {
+    width: 500px;
+    margin: auto;
+}
+
 
 .content-dc {
     height: 100%;

@@ -221,4 +221,55 @@ class Image
         }
         return null;
     }
+
+    public static function getDominantRGBById($pdo, $path, $extension) {
+        $rgbRes = array('r' => 0, 'g' => 0, 'b' => 0);
+        $cardinal = 0;
+
+        $funcCreateImage = 'imagecreatefrom' . $extension;
+        $img = $funcCreateImage($path);
+        if (!$img) {
+            return null;
+        }
+
+        for ($x = 0; $x < imagesx($img); $x++) {
+            for ($y = 0; $y < imagesy($img); $y++) {
+                $rgb = imagecolorat($img, $x, $y);
+                $rgbRes['r'] += ($rgb >> 16) & 0xFF;
+                $rgbRes['g'] += ($rgb >> 8) & 0xFF;
+                $rgbRes['b'] += $rgb & 0xFF;
+                $cardinal++;
+            }
+        }
+        $rgbRes['r'] = round($rgbRes['r'] / $cardinal);
+        $rgbRes['g'] = round($rgbRes['g'] / $cardinal);
+        $rgbRes['b'] = round($rgbRes['b'] / $cardinal);
+        return $rgbRes;
+    }
+
+    public static function equalsRGB($rgbArray1, $rgbArray2) {
+        return $rgbArray1['r'] == $rgbArray2['r'] && $rgbArray1['g'] == $rgbArray2['g'] && $rgbArray1['b'] == $rgbArray2['b'];
+    }
+
+    public static function getImagesByRGB($pdo, $rgbArray) {
+        $images = array();
+        $allImages = self::getImages($pdo);
+        if ($allImages === null) {
+            return null;
+        }
+
+        foreach ($allImages as $anImage) {
+            $extension = explode('.', $anImage['path'])[1];
+            $extension = $extension == 'jpg' ? 'jpeg' : $extension;
+            $rgb = self::getDominantRGBById($pdo, $anImage['path'], $extension);
+            if ($rgb === null) {
+                return null;
+            }
+
+            if (self::equalsRGB($rgb, $rgbArray)) {
+                $images[$anImage['id']] = $anImage['path'];
+            }
+        }
+        return $images;
+    }
 }
