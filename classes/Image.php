@@ -142,11 +142,81 @@ class Image
         $funcCreateImage = 'imagecreatefrom' . $extension;
         $img = $funcCreateImage($path);
         if ($img) {
+            imagesavealpha($img, true);
             imagefilter($img, IMG_FILTER_GRAYSCALE);
             imagefilter($img, IMG_FILTER_COLORIZE, 100, 50, 0);
             $funcSaveImage = 'image' . $extension;
             $funcSaveImage($img, $path);
-            //imagedestroy($img);
+            return true;
+        }
+        return null;
+    }
+
+    public static function greyscale($path, $extension)
+    {
+        $funcCreateImage = 'imagecreatefrom' . $extension;
+        $img = $funcCreateImage($path);
+        if ($img) {
+            imagesavealpha($img, true);
+            imagefilter($img, IMG_FILTER_GRAYSCALE);
+            $funcSaveImage = 'image' . $extension;
+            $funcSaveImage($img, $path);
+            return true;
+        }
+        return null;
+    }
+
+    public static function gauss($path, $extension)
+    {
+        $funcCreateImage = 'imagecreatefrom' . $extension;
+        $img = $funcCreateImage($path);
+        if ($img) {
+            imagesavealpha($img, true);
+            imagefilter($img, IMG_FILTER_GAUSSIAN_BLUR);
+            $funcSaveImage = 'image' . $extension;
+            $funcSaveImage($img, $path);
+            return true;
+        }
+        return null;
+    }
+
+    public static function border($path, $extension)
+    {
+        $funcCreateImage = 'imagecreatefrom' . $extension;
+        $img = $funcCreateImage($path);
+        if ($img) {
+            imagesavealpha($img, true);
+            imagefilter($img, IMG_FILTER_EDGEDETECT);
+            $funcSaveImage = 'image' . $extension;
+            $funcSaveImage($img, $path);
+            return true;
+        }
+        return null;
+    }
+
+    public static function light($path, $extension, $amount)
+    {
+        $funcCreateImage = 'imagecreatefrom' . $extension;
+        $img = $funcCreateImage($path);
+        if ($img) {
+            imagesavealpha($img, true);
+            imagefilter($img, IMG_FILTER_BRIGHTNESS, $amount);
+            $funcSaveImage = 'image' . $extension;
+            $funcSaveImage($img, $path);
+            return true;
+        }
+        return null;
+    }
+
+    public static function contrast($path, $extension, $amount)
+    {
+        $funcCreateImage = 'imagecreatefrom' . $extension;
+        $img = $funcCreateImage($path);
+        if ($img) {
+            imagesavealpha($img, true);
+            imagefilter($img, IMG_FILTER_CONTRAST, $amount);
+            $funcSaveImage = 'image' . $extension;
+            $funcSaveImage($img, $path);
             return true;
         }
         return null;

@@ -5,10 +5,10 @@
                     <?php
                     if ($userId == $idUserConnected) {
                         ?>
-                        <a href="index.php?action=effect&effect=sepia&param=<?php echo $imageId; ?>"><img class="effect-image-page" src="<?php echo $image; ?>" alt=""></a>
-                        <a href=""><img class="effect-image-page" src="<?php echo $image; ?>" alt=""></a>
-                        <a href=""><img class="effect-image-page" src="<?php echo $image; ?>" alt=""></a>
-                        <a href=""><img class="effect-image-page" src="<?php echo $image; ?>" alt=""></a>
+                        <a href="index.php?action=effect&effect=sepia&param=<?php echo $imageId; ?>"><img class="effect-image-page" src="assets/img/sepia_filter.png" alt=""></a>
+                        <a href="index.php?action=effect&effect=greyscale&param=<?php echo $imageId; ?>"><img class="effect-image-page" src="assets/img/greyscale_filter.png" alt=""></a>
+                        <a href="index.php?action=effect&effect=gauss&param=<?php echo $imageId; ?>"><img class="effect-image-page" src="assets/img/gauss_filter.png" alt=""></a>
+                        <a href="index.php?action=effect&effect=border&param=<?php echo $imageId; ?>"><img class="effect-image-page" src="assets/img/border_filter.png" alt=""></a>
                         <?php
                     }
                     ?>
@@ -20,8 +20,8 @@
                     <?php
                     if ($userId == $idUserConnected) {
                         ?>
-                        <h4>Luminosité</h4><a href="">Diminuer (-)</a><br /><a href="">Augmenter (+)</a><br /><br />
-                        <h4>Contraste</h4><a href="">Diminuer (-)</a><br /><a href="">Augmenter (+)</a><span><br /><br />
+                        <h4>Luminosité</h4><a href="index.php?action=effect&effect=lightplus&param=<?php echo $imageId; ?>">Diminuer (-)</a><br /><a href="index.php?action=effect&effect=lightless&param=<?php echo $imageId; ?>">Augmenter (+)</a><br /><br />
+                        <h4>Contraste</h4><a href="index.php?action=effect&effect=contrastplus&param=<?php echo $imageId; ?>">Diminuer (-)</a><br /><a href="index.php?action=effect&effect=contrastless&param=<?php echo $imageId; ?>">Augmenter (+)</a><span><br /><br />
                         <h4>Actions</h4><a href="index.php?action=delete&param=<?php echo $imageId; ?>">Supprimer</a>
                         <?php
                     }
