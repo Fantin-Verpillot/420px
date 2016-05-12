@@ -31,6 +31,20 @@ class Image
         }
     }
 
+    public static function updateRGB($pdo, $id) {
+        $rgb = self::getRGBById($pdo, $id);
+        if ($rgb == null) {
+            return null;
+        }
+
+        try {
+            $pdo->exec('UPDATE image SET rgb =\'' . $rgb['r'] . ',' . $rgb['g'] . ',' . $rgb['b'] . '\' WHERE id = ' . intval($id));
+            return true;
+        } catch (PDOException $e) {
+            return null;
+        }
+    }
+
     public static function ownedBy($pdo, $idImage, $idUserConnected) {
         try {
             $select = $pdo->query('SELECT user_id FROM image WHERE id = ' . intval($idImage));

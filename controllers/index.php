@@ -22,23 +22,23 @@ if (isset($_GET['action'])) {
             if (isset($_GET['param']) && User::exists($pdo, $_GET['param'])) {
                 require_once 'controllers/user.php';
                 require_once 'views/user.php';
-                break;
             }
+            break;
         }
         case 'image' : {
             if (isset($_GET['param']) && Image::exists($pdo, $_GET['param'])) {
                 require_once 'controllers/image.php';
                 require_once 'views/image.php';
-                break;
             }
+            break;
         }
         case 'effect' : {
             if (isset($_GET['param']) && Image::exists($pdo, $_GET['param']) && isset($_GET['effect'])) {
                 require_once 'controllers/effect.php';
                 require_once 'controllers/image.php';
                 require_once 'views/image.php';
-                break;
             }
+            break;
         }
         case 'delete' : {
             if (isset($_GET['param']) && Image::exists($pdo, $_GET['param']) && Image::ownedBy($pdo, $_GET['param'], $idUserConnected)) {
@@ -53,8 +53,8 @@ if (isset($_GET['action'])) {
                 require_once 'controllers/user.php';
                 require_once 'views/user.php';
                 $alert_error = 'La photo a disparu de votre page.';
-                break;
             }
+            break;
         }
         case 'upload' : {
             if (isset($_POST['upload']) && !empty($_FILES['file']['name'])) {

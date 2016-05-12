@@ -51,3 +51,8 @@ switch ($_GET['effect']) {
         break;
     }
 }
+$res = Image::updateRGB($pdo, $_GET['param']);
+if (!Tools::validate($res)) {
+    $alert_error = Tools::internalError();
+    exit();
+}
