@@ -20,13 +20,14 @@ class Image
     public static function addImage($pdo, $userId, $extension, $rgb) {
         $stringRGB = $rgb['r'] . ',' . $rgb['g'] . ',' . $rgb['b'];
         try {
-            $select = $pdo->query('SELECT max(id) + 1 as max FROM image');
+            $select = $pdo->query('SELECT count(id) + 1 as max FROM image');
             $select->setFetchMode(PDO::FETCH_OBJ);
             $idImage = $select->fetch()->max;
             $pdo->exec('INSERT INTO image (id, path, user_id, rgb) VALUES (' . intval($idImage) . ', \'files/img_'
                 . intval($idImage) . '.' . $extension.'\', ' . intval($userId).', \''.$stringRGB.'\')');
             return $idImage;
         } catch (PDOException $e) {
+            var_dump('hahaha');
             return null;
         }
     }
