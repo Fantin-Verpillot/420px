@@ -75,9 +75,10 @@
     height: 45px;
 }
 
-.search-form {
-    border-bottom: 1px solid grey;
-    padding-bottom: 45px;
+.search-results {
+    position: relative;
+    top: 60px;
+    left: 0px;
 }
 
 .form-dc {

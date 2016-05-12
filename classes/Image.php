@@ -17,13 +17,14 @@ class Image
         }
     }
 
-    public static function addImage($pdo, $userId, $extension) {
+    public static function addImage($pdo, $userId, $extension, $rgb) {
+        $stringRGB = $rgb['r'] . ',' . $rgb['g'] . ',' . $rgb['b'];
         try {
             $select = $pdo->query('SELECT max(id) + 1 as max FROM image');
             $select->setFetchMode(PDO::FETCH_OBJ);
             $idImage = $select->fetch()->max;
-            $pdo->exec('INSERT INTO image (id, path, user_id) VALUES (' . intval($idImage) . ', \'files/img_'
-                . intval($idImage) . '.' . $extension.'\', ' . intval($userId).')');
+            $pdo->exec('INSERT INTO image (id, path, user_id, rgb) VALUES (' . intval($idImage) . ', \'files/img_'
+                . intval($idImage) . '.' . $extension.'\', ' . intval($userId).', \''.$stringRGB.'\')');
             return $idImage;
         } catch (PDOException $e) {
             return null;
@@ -222,7 +223,19 @@ class Image
         return null;
     }
 
-    public static function getDominantRGBById($pdo, $path, $extension) {
+    public static function getRGBById($pdo, $id) {
+        try {
+            $select = $pdo->query('SELECT rgb FROM image WHERE id = ' . intval($id));
+            $select->setFetchMode(PDO::FETCH_OBJ);
+            $image = $select->fetch();
+            $rgb = explode(',', $image->rgb);
+            return array('r' => $rgb[0], 'g' => $rgb[1], 'b' => $rgb[2]);
+        } catch (PDOException $e) {
+            return null;
+        }
+    }
+
+    public static function getDominantRGB($path, $extension) {
         $rgbRes = array('r' => 0, 'g' => 0, 'b' => 0);
         $cardinal = 0;
 
@@ -259,9 +272,7 @@ class Image
         }
 
         foreach ($allImages as $anImage) {
-            $extension = explode('.', $anImage['path'])[1];
-            $extension = $extension == 'jpg' ? 'jpeg' : $extension;
-            $rgb = self::getDominantRGBById($pdo, $anImage['path'], $extension);
+            $rgb = self::getRGBById($pdo, $anImage['id']);
             if ($rgb === null) {
                 return null;
             }
